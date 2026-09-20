@@ -38,7 +38,11 @@ jobs:
     #runs-on: ubuntu-latest
     #runs-on: ubuntu-22.04
     runs-on: ubuntu-24.04
-
+    permissions:
+      actions: write
+      contents: write
+      attestations: write
+      
     steps:
     - name: Checkout main-repo
       uses: actions/checkout@v5
@@ -69,7 +73,20 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
 
     - name: Clone source code
-      run: git clone $REPO_URL -b $REPO_BRANCH openwrt
+      run: |
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        mkdir -p openwrt/dl
+
+    - name: Set dl cache key
+      run: echo "DL_CACHE_KEY=openwrt-dl-${{ hashFiles('main-repo/.diffconfig') }}" >> "$GITHUB_ENV"
+
+    - name: Cache dl
+      uses: actions/cache@v5
+      with:
+        path: openwrt/dl
+        key: ${{ env.DL_CACHE_KEY }}
+        restore-keys: |
+          openwrt-dl-
 
     - name: Cache
       uses: klever1988/cachewrtbuild@main
