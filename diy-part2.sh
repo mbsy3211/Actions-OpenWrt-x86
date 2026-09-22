@@ -29,10 +29,4 @@ sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/
 
 
 
-
-
-
-
-
-
 # welcome test
