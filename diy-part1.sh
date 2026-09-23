@@ -413,6 +413,11 @@ fi
 exit 0
 EOF
 
+cat > package/base-files/files/etc/uci-defaults/99-argon <<EOF
+uci set argon.@global[0].primary='#5e72e4'
+uci set argon.@global[0].mode='normal'
+uci commit argon
+EOF
 
 
 cat>files/usr/share/Lenyu-pw.sh<<-\EOF
