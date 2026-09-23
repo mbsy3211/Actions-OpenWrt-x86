@@ -20,7 +20,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-s
 # 2. 移除 Lean 源码中硬编码对 Argon 的默认指向
 #sed -i 's/luci-theme-argon/luci-theme-design/g' feeds/luci/collections/luci/Makefile
 # 3. 强行修改底层默认设置脚本中的初始开机 UI 路径
-sed -i 's/luci-static\/argon/luci-static\/design/g' package/lean/default-settings/files/zzz-default-settings
+#sed -i 's/luci-static\/argon/luci-static\/design/g' package/lean/default-settings/files/zzz-default-settings
 #sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/x86/Makefile
 #sed -i "s/.*PKG_VERSION:=.*/PKG_VERSION:=4.3.9_v1.2.14/" package/lean/qBittorrent-static/Makefile
 #sed -i "s/.*PKG_VERSION:=.*/PKG_VERSION:=5.0.0-stable/" package/libs/wolfssl/Makefile
