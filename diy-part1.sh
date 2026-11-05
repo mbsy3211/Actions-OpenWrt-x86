@@ -626,5 +626,7 @@ fi
 echo_blue "=== Passwall 热更新完成，网络已无缝恢复 ==="
 exit 0
 EOF
-
+# 升级 Golang 工具链以解决 xray-core 编译所需的 Go 版本问题
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
