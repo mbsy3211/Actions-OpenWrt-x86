@@ -30,9 +30,5 @@ sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/
 sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/usr/share/Lenyu-auto.sh
 sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/usr/share/Lenyu-version.sh
 sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/usr/share/Lenyu-pw.sh
-# 2. 设定 Argon 为 LuCI 的默认界面
-uci set luci.main.mediaurlbase='/luci-static/argon'
-uci commit luci
-
 
 # welcome test
