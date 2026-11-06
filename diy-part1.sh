@@ -18,6 +18,10 @@ echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf
 # Add passwall
 echo "src-git passwall https://github.com/Openwrt-Passwall/openwrt-passwall.git;main" >> "feeds.conf.default"
 #
+# 添加 Mihomo feed（使用更稳妥的写入方式）
+grep -q "morytyann/OpenWrt-mihomo" feeds.conf.default || \
+  echo "src-git mihomo https://github.com/morytyann/OpenWrt-mihomo.git;main" >> feeds.conf.default
+#
 mkdir -p files/usr/share
 mkdir -p files/etc/
 touch files/etc/lenyu_version
@@ -171,7 +175,7 @@ EOOF
 
 cat>files/usr/share/Check_Update.sh<<-\EOF
 #!/bin/bash
-# https://github.com/mbsy3211/Actions-OpenWrt-x86
+# https://github.com/mubinsy3211/ActionsOpenWrtx86
 # Actions-OpenWrt-x86 By Lenyu 20210505
 #path=$(dirname $(readlink -f $0))
 # cd ${path}
@@ -185,16 +189,16 @@ fi
 rm -f /tmp/cloud_version
 # 获取固件云端版本号、内核版本号信息
 current_version=`cat /etc/lenyu_version`
-wget -qO- -t1 -T2 "https://api.github.com/repos/mbsy3211/Actions-OpenWrt-x86/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g;s/v//g'  > /tmp/cloud_ts_version
+wget -qO- -t1 -T2 "https://api.github.com/repos/mubinsy3211/ActionsOpenWrtx86/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g;s/v//g'  > /tmp/cloud_ts_version
 if [ -s  "/tmp/cloud_ts_version" ]; then
 	cloud_version=`cat /tmp/cloud_ts_version | cut -d _ -f 1`
 	cloud_kernel=`cat /tmp/cloud_ts_version | cut -d _ -f 2`
 	#固件下载地址
 	new_version=`cat /tmp/cloud_ts_version`
-	DEV_URL=https://github.com/mbsy3211/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_dev_Lenyu.img.gz
-	DEV_UEFI_URL=https://github.com/mbsy3211/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img.gz
-	openwrt_dev=https://github.com/mbsy3211/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev.md5
-	openwrt_dev_uefi=https://github.com/mbsy3211/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev_uefi.md5
+	DEV_URL=https://github.com/mubinsy3211/ActionsOpenWrtx86/releases/download/${new_version}/openwrt_x86-64-${new_version}_dev_Lenyu.img.gz
+	DEV_UEFI_URL=https://github.com/mubinsy3211/ActionsOpenWrtx86/releases/download/${new_version}/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img.gz
+	openwrt_dev=https://github.com/mubinsy3211/ActionsOpenWrtx86/releases/download/${new_version}/openwrt_dev.md5
+	openwrt_dev_uefi=https://github.com/mubinsy3211/ActionsOpenWrtx86/releases/download/${new_version}/openwrt_dev_uefi.md5
 else
 	echo "请检测网络或重试！"
 	exit 1
@@ -313,7 +317,7 @@ EOF
 
 cat>files/usr/share/Lenyu-auto.sh<<-\EOF
 #!/bin/bash
-# https://github.com/mbsy3211/Actions-OpenWrt-x86
+# https://github.com/mubinsy3211/ActionsOpenWrtx86
 # Actions-OpenWrt-x86 By Lenyu 20210505
 #path=$(dirname $(readlink -f $0))
 # cd ${path}
@@ -334,16 +338,16 @@ cp -f /usr/bin/xray /etc/xray_backup/xray_backup
 
 # 获取固件云端版本号、内核版本号信息
 current_version=`cat /etc/lenyu_version`
-wget -qO- -t1 -T2 "https://api.github.com/repos/mbsy3211/Actions-OpenWrt-x86/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g;s/v//g'  > /tmp/cloud_ts_version
+wget -qO- -t1 -T2 "https://api.github.com/repos/mubinsy3211/ActionsOpenWrtx86/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g;s/v//g'  > /tmp/cloud_ts_version
 if [ -s  "/tmp/cloud_ts_version" ]; then
 	cloud_version=`cat /tmp/cloud_ts_version | cut -d _ -f 1`
 	cloud_kernel=`cat /tmp/cloud_ts_version | cut -d _ -f 2`
 	#固件下载地址
 	new_version=`cat /tmp/cloud_ts_version`
-	DEV_URL=https://github.com/mbsy3211/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_dev_Lenyu.img.gz
-	DEV_UEFI_URL=https://github.com/mbsy3211/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img.gz
-	openwrt_dev=https://github.com/mbsy3211/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev.md5
-	openwrt_dev_uefi=https://github.com/mbsy3211/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev_uefi.md5
+	DEV_URL=https://github.com/mubinsy3211/ActionsOpenWrtx86/releases/download/${new_version}/openwrt_x86-64-${new_version}_dev_Lenyu.img.gz
+	DEV_UEFI_URL=https://github.com/mubinsy3211/ActionsOpenWrtx86/releases/download/${new_version}/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img.gz
+	openwrt_dev=https://github.com/mubinsy3211/ActionsOpenWrtx86/releases/download/${new_version}/openwrt_dev.md5
+	openwrt_dev_uefi=https://github.com/mubinsy3211/ActionsOpenWrtx86/releases/download/${new_version}/openwrt_dev_uefi.md5
 else
 	echo "请检测网络或重试！"
 	exit 1
@@ -392,7 +396,7 @@ EOF
 
 cat>files/usr/share/Lenyu-version.sh<<-\EOF
 #!/bin/bash
-# https://github.com/mbsy3211/Actions-OpenWrt-x86
+# https://github.com/mubinsy3211/ActionsOpenWrtx86
 # Actions-OpenWrt-x86 By Lenyu 20210505
 #path=$(dirname $(readlink -f $0))
 # cd ${path}
@@ -406,7 +410,7 @@ fi
 rm -f /tmp/cloud_version
 # 获取固件云端版本号、内核版本号信息
 current_version=`cat /etc/lenyu_version`
-wget -qO- -t1 -T2 "https://api.github.com/repos/mbsy3211/Actions-OpenWrt-x86/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g;s/v//g'  > /tmp/cloud_ts_version
+wget -qO- -t1 -T2 "https://api.github.com/repos/mubinsy3211/ActionsOpenWrtx86/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g;s/v//g'  > /tmp/cloud_ts_version
 if [ -s  "/tmp/cloud_ts_version" ]; then
 cloud_version=`cat /tmp/cloud_ts_version | cut -d _ -f 1`
 fi
@@ -417,6 +421,7 @@ uci set argon.@global[0].primary='#5e72e4'
 uci set argon.@global[0].mode='normal'
 uci commit argon
 EOF
+
 
 
 cat>files/usr/share/Lenyu-pw.sh<<-\EOF
@@ -626,5 +631,3 @@ fi
 echo_blue "=== Passwall 热更新完成，网络已无缝恢复 ==="
 exit 0
 EOF
-
-
