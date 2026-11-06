@@ -9,11 +9,12 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
-
+# 在 diy-part2.sh 中
+cat .diffconfig >> .config
+make defconfig
 # Modify default IP
 sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
 # 1. 替换 Luci 的默认核心主题依赖
-#sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 # 2. 移除 Lean 源码中硬编码对 Argon 的默认指向
 #sed -i 's/luci-theme-argon/luci-theme-design/g' feeds/luci/collections/luci/Makefile
@@ -26,9 +27,11 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-l
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-nginx/Makefile
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-ssl-nginx/Makefile
 # 修改升级检测
-sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/usr/share/Check_Update.sh
-sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/usr/share/Lenyu-auto.sh
-sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/usr/share/Lenyu-version.sh
-sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/usr/share/Lenyu-pw.sh
+sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/ActionsOpenWrtx86|g' files/usr/share/Check_Update.sh
+sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/ActionsOpenWrtx86|g' files/usr/share/Lenyu-auto.sh
+sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/ActionsOpenWrtx86|g' files/usr/share/Lenyu-version.sh
+sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/ActionsOpenWrtx86|g' files/usr/share/Lenyu-pw.sh
+
+
 
 # welcome test
