@@ -27,10 +27,10 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-l
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-nginx/Makefile
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-ssl-nginx/Makefile
 # 修改升级检测
-sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/ActionsOpenWrtx86|g' files/usr/share/Check_Update.sh
-sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/ActionsOpenWrtx86|g' files/usr/share/Lenyu-auto.sh
-sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/ActionsOpenWrtx86|g' files/usr/share/Lenyu-version.sh
-sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/ActionsOpenWrtx86|g' files/usr/share/Lenyu-pw.sh
+sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/usr/share/Check_Update.sh
+sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/usr/share/Lenyu-auto.sh
+sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/usr/share/Lenyu-version.sh
+sed -i 's|/Lenyu2020/Actions-OpenWrt-x86|/mbsy3211/Actions-OpenWrt-x86|g' files/usr/share/Lenyu-pw.sh
 
 
 
